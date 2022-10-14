@@ -14,7 +14,7 @@ tiles = {
 ]]--
 
 minetest.register_node("anstri:peterthite", {
-    description = "Peter Tharp's anstri stone created in 21",
+    description = "Peter Tharp's anstri stone created in 21. Used to craft a crafting book",
     tiles = {"anstri_top.png","anstri_top.png",
             "anstri_peterite_side.png","anstri_peterite_side.png",
             "anstri_peterite_side.png","anstri_peterite_side.png",},
@@ -36,3 +36,5 @@ minetest.register_node("anstri:jensonite", {
             "anstri_jensonite_5.png","anstri_jensonite_6.png",},
     groups = {dig_immediate=3,}
 })
+
+

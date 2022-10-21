@@ -1,0 +1,2 @@
+anstri = {}
+anstri.debugOn = true

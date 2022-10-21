@@ -13,23 +13,38 @@ tiles = {
 },
 ]]--
 
---Anstri Stone Registrations 
+local modpath = minetest.get_modpath("anstri")
+dofile(modpath.."/config.lua")
+dofile(modpath.."/functions.lua")
 
-minetest.register_node("anstri:peterthite", {
-    description = "Peter Tharp's anstri stone created in 21. Used to craft a crafting book",
-    tiles = {"anstri_top.png","anstri_top.png",
-            "anstri_peterite_side.png","anstri_peterite_side.png",
-            "anstri_peterite_side.png","anstri_peterite_side.png",},
-    groups = {dig_immediate=3,}
-})
+--Anstri Stone List
+anstristones = {
+    RyanSandling = "ryansite",
+    PeterTharp = "peterite",
+    NickLassitor = "niclassite",
+    CalebActon = "calbactite",
+    JensonHelm = "jensonite",
+    KiaHedgecoke = "kyhite",
+    LexiGroom = "lexite",
+    AndrewHerndon = "aherndite"
+}
 
-minetest.register_node("anstri:niclassite", {
-    description = "Nick Lassiter's anstri stone created in 21",
-    tiles = {"anstri_top.png","anstri_top.png",
-            "anstri_niclassite_side.png","anstri_niclassite_side.png",
-            "anstri_niclassite_side.png","anstri_niclassite_side.png",},
-    groups = {dig_immediate=3,}
-})
+--Register the stones
+anstri.reg_ore("Peter Tharp","peterite",21,"Used to craft a crafting book")
+anstri.reg_ore("Nick Lassitor","niclassite",21)
+anstri.reg_ore("Ryan Sandling","ryansite",17,"Used to craft the submarine")
+anstri.reg_ore("Caleb Acton",anstristones.CalebActon,21,"Used to craft the engine for the automobile mod")
+anstri.reg_ore("Kia Hedgcoke",anstristones.KiaHedgecoke,17,"used to craft a Demoiselle")
+anstri.reg_ore("Lexi Groom",anstristones.LexiGroom,17,"Used to craft the Skull Shield")
+anstri.reg_ore("Andrew Herndon",anstristones.AndrewHerndon,19,"Used to create the Boat")
+-- Jordan Keifer 17
+-- Mark Nicholas 17
+-- Randy Elledge 21
+-- Nicholas Rodgers 17
+-- Asaf Abreu 21
+-- David Powell 19
+-- Grant Savage 17
+-- Noah Moreland 21
 
 minetest.register_node("anstri:jensonite", {
     description = "Jenson Helm's anstri stone created in 21",
@@ -39,5 +54,12 @@ minetest.register_node("anstri:jensonite", {
     groups = {dig_immediate=3,}
 })
 
-
 --Paladin Ore Registrations
+
+--Overrides
+anstri.override("nautilus:engine",anstristones.RyanSandling,7)
+anstri.override("automobiles_lib:engine",anstristones.CalebActon,8)
+anstri.override("demoiselle:body",anstristones.KiaHedgecoke,5)
+anstri.override("equippable_accessories:skull_shield",anstristones.LexiGroom,1)
+anstri.override("motorboat:engine",anstristones.AndrewHerndon,1)
+anstri.override("steampunk_blimp:boiler",anstristones.PeterTharp,7)

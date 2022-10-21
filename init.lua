@@ -26,7 +26,8 @@ anstristones = {
     JensonHelm = "jensonite",
     KiaHedgecoke = "kyhite",
     LexiGroom = "lexite",
-    AndrewHerndon = "aherndite"
+    AndrewHerndon = "aherndite",
+    JordanKiefer = "jokefite"
 }
 
 --Register the stones
@@ -37,6 +38,7 @@ anstri.reg_ore("Caleb Acton",anstristones.CalebActon,21,"Used to craft the engin
 anstri.reg_ore("Kia Hedgcoke",anstristones.KiaHedgecoke,17,"used to craft a Demoiselle")
 anstri.reg_ore("Lexi Groom",anstristones.LexiGroom,17,"Used to craft the Skull Shield")
 anstri.reg_ore("Andrew Herndon",anstristones.AndrewHerndon,19,"Used to create the Boat")
+anstri.reg_ore("Jordan Kiefer",anstristones.JordanKiefer,17,"Used to build the PA28")
 -- Jordan Keifer 17
 -- Mark Nicholas 17
 -- Randy Elledge 21
@@ -63,3 +65,4 @@ anstri.override("demoiselle:body",anstristones.KiaHedgecoke,5)
 anstri.override("equippable_accessories:skull_shield",anstristones.LexiGroom,1)
 anstri.override("motorboat:engine",anstristones.AndrewHerndon,1)
 anstri.override("steampunk_blimp:boiler",anstristones.PeterTharp,7)
+anstri.override("pa28:fuselage",anstristones.JordanKiefer,5)

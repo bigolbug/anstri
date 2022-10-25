@@ -27,7 +27,9 @@ anstristones = {
     KiaHedgecoke = "kyhite",
     LexiGroom = "lexite",
     AndrewHerndon = "aherndite",
-    JordanKiefer = "jokefite"
+    JordanKiefer = "jokefite",
+    GrantSavage = "grantite",
+    MarkNicholas = "marcite"
 }
 
 --Register the stones
@@ -39,13 +41,12 @@ anstri.reg_ore("Kia Hedgcoke",anstristones.KiaHedgecoke,17,"used to craft a Demo
 anstri.reg_ore("Lexi Groom",anstristones.LexiGroom,17,"Used to craft the Skull Shield")
 anstri.reg_ore("Andrew Herndon",anstristones.AndrewHerndon,19,"Used to create the Boat")
 anstri.reg_ore("Jordan Kiefer",anstristones.JordanKiefer,17,"Used to build the PA28")
--- Jordan Keifer 17
--- Mark Nicholas 17
+anstri.reg_ore("Mark Nicholas",anstristones.MarkNicholas,17,"Used to craft Gun Powder")
 -- Randy Elledge 21
 -- Nicholas Rodgers 17
 -- Asaf Abreu 21
 -- David Powell 19
--- Grant Savage 17
+anstri.reg_ore("Grant Savage",anstristones.GrantSavage,17,"Used to craft biofuel")
 -- Noah Moreland 21
 
 minetest.register_node("anstri:jensonite", {
@@ -66,3 +67,5 @@ anstri.override("equippable_accessories:skull_shield",anstristones.LexiGroom,1)
 anstri.override("motorboat:engine",anstristones.AndrewHerndon,1)
 anstri.override("steampunk_blimp:boiler",anstristones.PeterTharp,7)
 anstri.override("pa28:fuselage",anstristones.JordanKiefer,5)
+anstri.override("biofuel:refinery",anstristones.GrantSavage,5)
+anstri.override("tnt:gunpowder",anstristones.MarkNicholas,3)

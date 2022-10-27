@@ -15,11 +15,9 @@ function anstri.exists(_)
     end
 
     -- if we could not find the item in registered nodes try the items
-    if not exists then
-        for node,pair in pairs(items) do
-            if node == _ then
-                return true
-            end
+    for node,pair in pairs(items) do
+        if node == _ then
+            return true
         end
     end
 

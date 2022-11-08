@@ -69,3 +69,9 @@ anstri.override("steampunk_blimp:boiler",anstristones.PeterTharp,7)
 anstri.override("pa28:fuselage",anstristones.JordanKiefer,5)
 anstri.override("biofuel:refinery",anstristones.GrantSavage,5)
 anstri.override("tnt:gunpowder",anstristones.MarkNicholas,3)
+
+--[[
+minetest.register_on_mods_loaded(function()
+    anstri.override("tnt:gunpowder",anstristones.MarkNicholas,3)
+end
+)]]--

@@ -26,20 +26,24 @@ function anstri.exists(_)
     return false
 end
 
-function anstri.craft(og_recipe)
+function anstri.recipeConvert(items) -- items is a table
     local recipe = {{"","",""},{"","",""},{"","",""}}
 
     --fill recipe
-    for i, item in pairs(og_recipe.items) do
+    for i, item in pairs(items) do
         --i = math.tointeger(i)
         local r = 1 + math.floor((i - 1)/3)
         local c = i - ((r - 1)*3)
         recipe[r][c] = item
     end
 
+    return recipe
+end
+
+function anstri.craft(og_recipe)
     minetest.register_craft({
         output = og_recipe.output,
-        recipe = recipe
+        recipe = anstri.recipeConvert(og_recipe.items)
     })
 end
 --Anstri Stone Registrations 
@@ -54,6 +58,18 @@ function anstri.reg_ore(stu_name,ore_name,year,desc)
     })    
 end
 
+function anstri.clear_craft(recipe,item)
+    local results = minetest.clear_craft({
+        output = item
+    })
+    if results then
+        return true
+    else
+        return false
+    end 
+    
+end
+
 --Anstri Override
 function anstri.override(item,ore,slot)
     --If not defined the slot number will be 9
@@ -62,22 +78,33 @@ function anstri.override(item,ore,slot)
     --Does the item exist?
     if anstri.exists(item) and anstri.exists(ore) then
         local recipe = {}
-        recipe.items = {}
 
-        --Check to see if there is a recipe
-        if minetest.get_all_craft_recipes(item) then
-            --collect item components
+        --Check to see if there is a recipe, If there are any clear them
+        local recipes = minetest.get_all_craft_recipes(item)
+        if recipes then
+            --Capture current recipe
             recipe = minetest.get_craft_recipe(item)
-            anstri.debug("Anstri: Found recipe for "..item)
-            --Remove old Craft recipe
-            minetest.clear_craft(recipe)          
+
+            --Find all the recipes and clear them
+            for index, recipe_to_clear in ipairs(recipes) do
+                --Remove Old Recipe
+                if anstri.clear_craft(recipe_to_clear,item) then
+                    anstri.debug("Anstri: Cleared recipe ".. index.." for "..item)
+                else
+                    anstri.debug("Anstri/ERROR: clear_craft returned false for "..item.." recipe")
+                end
+                
+            end
         else
+            anstri.debug("Anstri: No recipes found for "..item)
+            --Create a recipe for the item
             recipe.output = item
-        end     
+            recipe.items = {}
+        end
 
         recipe.items[slot] = ore
         anstri.craft(recipe)
     end
 
-    minetest.debug("Anstri: Recipe for "..item.." replaced")
+    minetest.debug("Anstri: Recipe for "..item.." defined")
 end
